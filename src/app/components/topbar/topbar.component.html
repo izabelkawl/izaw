@@ -1,0 +1,15 @@
+<div class="topbar">
+  <span class="topbar--logo">{{
+    "TOPBAR.LOGO_TEXT" | translate | uppercase
+  }}</span>
+  <ul class="topbar--menu">
+    @for (item of menu; let index = $index; track index) {
+      <li (click)="activeItem(index)">
+        <a>{{ item.title | translate }}</a>
+        @if (item.isActive) {
+          <span>•</span>
+        }
+      </li>
+    }
+  </ul>
+</div>
