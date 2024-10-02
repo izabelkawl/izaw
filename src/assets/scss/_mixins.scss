@@ -1,0 +1,12 @@
+
+@mixin textStyle($color) {
+    color: $color;
+    opacity: 0.75;
+
+    &:hover,
+    &:focus,
+    &:active {
+        cursor: pointer;
+        opacity: 1;
+    }
+}
