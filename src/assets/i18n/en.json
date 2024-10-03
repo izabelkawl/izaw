@@ -1,10 +1,19 @@
 {
-    "TOPBAR": {
-        "LOGO_TEXT": "Izabela W.",
-      "ABOUT_ME": "About me",
-      "WORK": "Work",
-      "SKILLS": "Skills",
-      "CONTACT": "Contact"
-    }
+  "TOPBAR": {
+    "LOGO_TEXT": "Izabela W.",
+    "ABOUT_ME": "About me",
+    "WORK": "Work",
+    "SKILLS": "Skills",
+    "CONTACT": "Contact"
+  },
+  "ABOUT_ME": {
+    "NAME": "Izabela",
+    "SURNAME":"Wlazło",
+    "CITY": "Rzeszów, Polska / Zdalnie",
+    "AVAILABLE": "Avalable",
+    "POSITION": "Front-end Developer"
+  },
+  "CONTACT": {
+    "DOWNLOAD_CV":"Download CV"
   }
-  
+}

@@ -1,0 +1,29 @@
+@import "./../../../assets/scss/variables";
+
+.project-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--title {
+    font-family: $font-family-caveat;
+    font-size: $font-size-header;
+  }
+
+  &--skills {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+
+    .item {
+      color: $black-color;
+      background-color: $white-color;
+      width: max-content;
+      padding: 1px 10px;
+      border-radius: 1rem;
+      border: 1px solid $pink-color;
+      box-shadow: 2px 5px $pink-color;
+    }
+  }
+}

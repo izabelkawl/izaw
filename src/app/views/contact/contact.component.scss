@@ -1,0 +1,25 @@
+@import "./../../../assets/scss/variables";
+
+.contact {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-header;
+  color: $pink-color;
+  letter-spacing: 5px;
+  gap: 30px;
+
+  &-links {
+    display: flex;
+    font-size: $font-size-logo;
+    gap: 50px;
+    letter-spacing: normal;
+
+    a {
+      text-decoration: none;
+      color: $white-color;
+    }
+  }
+}

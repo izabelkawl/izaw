@@ -1,1 +1,10 @@
-<p>work works!</p>
+@for (project of projects; track $index) {
+  <div class="project-container">
+    <h1 class="project-container--title">{{ project }}</h1>
+    <div class="project-container--skills">
+      @for (skill of work[project].skills; track $index) {
+        <div class="item">{{ skill }}</div>
+      }
+    </div>
+  </div>
+}

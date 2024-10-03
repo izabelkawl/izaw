@@ -5,8 +5,21 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './work.component.html',
-  styleUrl: './work.component.scss'
+  styleUrl: './work.component.scss',
 })
 export class WorkComponent {
+  public readonly skills: string[] = ['Angular', 'JavaScript', 'TypeScript'];
 
+  work: { [name: string]: { skills: string[] } } = {
+    CV: {
+      skills: ['Angular', 'JavaScript', 'TypeScript'],
+    },
+    'Busy Bee': {
+      skills: ['Angular', 'JavaScript', 'TypeScript', 'HTML/CSS'],
+    },
+  };
+
+  get projects(): string[] {
+    return Object.keys(this.work);
+  }
 }

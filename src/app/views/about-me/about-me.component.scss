@@ -1,0 +1,42 @@
+@import "./../../../assets/scss/variables";
+
+.about-me-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-header;
+
+  > * {
+    width: 33%;
+  }
+
+  &--user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .subtitle {
+      font-size: $font-size-logo;
+
+      &--dott {
+        margin-right: 8px;
+        color: $pink-color;
+        text-shadow: 0 0 10px white;
+      }
+    }
+  }
+
+  &--image {
+    height: auto;
+    border: 22px double $pink-color;
+    border-radius: 45%;
+    margin: 0 30px;
+  }
+
+  &--position {
+    display: flex;
+    flex-direction: column;
+    white-space: wrap;
+    white-space: pre-line;
+  }
+}

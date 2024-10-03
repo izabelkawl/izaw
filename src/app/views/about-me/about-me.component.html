@@ -1,1 +1,15 @@
-<p>about-me works!</p>
+<div class="about-me-container">
+  <div class="about-me-container--user">
+    <span
+      >{{ "ABOUT_ME.NAME" | translate }}
+      {{ "ABOUT_ME.SURNAME" | translate }}</span
+    >
+    <span class="subtitle">{{ "ABOUT_ME.CITY" | translate }}</span>
+    <span class="subtitle">
+        <span class="subtitle--dott">•</span>{{ "ABOUT_ME.AVAILABLE" | translate }}</span>
+  </div>
+  <img class="about-me-container--image" src="./../../../assets/img/avatar.png" alt="avatar" />
+  <div class="about-me-container--position">
+    <span>{{ "ABOUT_ME.POSITION" | translate }}</span>
+  </div>
+</div>

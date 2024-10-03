@@ -1,9 +1,12 @@
+<div class="home-container">
+  <app-topbar />
 
-<app-topbar />
+  <div class="home-container--lang" (click)="changeLang()">
+    <span>{{ langButtonLabel | uppercase }}</span>
+  </div>
 
-<p (click)="chengeLang()">lang</p> 
+  <app-about-me />
+</div>
 
 <app-work />
-<app-about-me />
-<app-skills />
 <app-contact />

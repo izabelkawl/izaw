@@ -20,10 +20,6 @@ export class TopbarComponent {
       isActive: false,
     },
     {
-      title: 'TOPBAR.SKILLS',
-      isActive: false,
-    },
-    {
       title: 'TOPBAR.CONTACT',
       isActive: false,
     },

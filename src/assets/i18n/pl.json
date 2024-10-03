@@ -5,5 +5,15 @@
     "WORK": "Praca",
     "SKILLS": "Umiejętności",
     "CONTACT": "Kontakt"
+  },
+  "ABOUT_ME": {
+    "NAME": "Izabela",
+    "SURNAME": "Wlazło",
+    "CITY": "Rzeszów, Poland / Remote",
+    "AVAILABLE": "Dostępna na pełen etat",
+    "POSITION": "Front-end Developer"
+  },
+  "CONTACT": {
+    "DOWNLOAD_CV":"Pobierz CV"
   }
 }
