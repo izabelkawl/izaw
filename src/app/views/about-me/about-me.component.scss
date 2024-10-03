@@ -29,8 +29,11 @@
   &--image {
     height: auto;
     border: 22px double $pink-color;
-    border-radius: 45%;
+    border-radius: 50% 2%;
     margin: 0 30px;
+    padding: 1rem;
+    box-shadow: none;
+    animation: pulse-shadow 3s infinite ease-in-out;
   }
 
   &--position {
@@ -38,5 +41,17 @@
     flex-direction: column;
     white-space: wrap;
     white-space: pre-line;
+  }
+}
+
+@keyframes pulse-shadow {
+  0% {
+    filter: drop-shadow(0 0 30px rgba($pink-color, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 60px $pink-color);
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba($pink-color, 0.4));
   }
 }
