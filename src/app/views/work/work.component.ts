@@ -12,7 +12,7 @@ export class WorkComponent {
 
   work: { [name: string]: { skills: string[] } } = {
     CV: {
-      skills: ['Angular', 'JavaScript', 'TypeScript'],
+      skills: ['Angular', 'JavaScript', 'TypeScript', 'HTML/CSS'],
     },
     'Busy Bee': {
       skills: ['Angular', 'JavaScript', 'TypeScript', 'HTML/CSS'],

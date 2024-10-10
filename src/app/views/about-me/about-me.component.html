@@ -1,15 +1,28 @@
-<div class="about-me-container">
-  <div class="about-me-container--user">
+<div class="about">
+  <div class="about__user">
     <span
       >{{ "ABOUT_ME.NAME" | translate }}
       {{ "ABOUT_ME.SURNAME" | translate }}</span
     >
-    <span class="subtitle">{{ "ABOUT_ME.CITY" | translate }}</span>
-    <span class="subtitle">
-        <span class="subtitle--dott">•</span>{{ "ABOUT_ME.AVAILABLE" | translate }}</span>
+    <span class="about__user-subtitle">{{ "ABOUT_ME.CITY" | translate }}</span>
+    <span class="about__user-subtitle">
+      <span class="about__user-subtitle--dot">•</span
+      >{{ "ABOUT_ME.AVAILABLE" | translate }}</span
+    >
   </div>
-  <img class="about-me-container--image" src="./../../../assets/img/avatar.png" alt="avatar" />
-  <div class="about-me-container--position">
+  <div class="about__image">
+    <img
+      class="about__image__tulip"
+      src="./../../../assets/img/logo.png"
+      alt="logo"
+    />
+    <img
+      class="about__image__me"
+      src="./../../../assets/img/avatar.png"
+      alt="avatar"
+    />
+  </div>
+  <div class="about__position">
     <span>{{ "ABOUT_ME.POSITION" | translate }}</span>
   </div>
 </div>

@@ -1,0 +1,1 @@
+export type TabTypes = 'about_me' | 'work' | 'contact'

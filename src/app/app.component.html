@@ -1,12 +1,12 @@
-<div class="home-container">
-  <app-topbar />
+<div class="app" id="about_me">
+  <app-topbar (activeTab)="scrollToWork($event)" />
 
-  <div class="home-container--lang" (click)="changeLang()">
+  <div class="app__lang" (click)="changeLang()">
     <span>{{ langButtonLabel | uppercase }}</span>
   </div>
 
   <app-about-me />
 </div>
 
-<app-work />
-<app-contact />
+<app-work id="work" />
+<app-contact id="contact" />

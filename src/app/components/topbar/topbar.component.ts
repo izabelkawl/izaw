@@ -1,6 +1,7 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { TabTypes } from './topbar.models';
 
 @Component({
   selector: 'app-topbar',
@@ -10,17 +11,22 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './topbar.component.scss',
 })
 export class TopbarComponent {
-  menu: { title: string; link?: string; isActive: boolean }[] = [
+  @Output() activeTab: EventEmitter<TabTypes> = new EventEmitter<TabTypes>();
+
+  menu: { title: string; type: TabTypes; isActive: boolean }[] = [
     {
       title: 'TOPBAR.ABOUT_ME',
+      type: 'about_me',
       isActive: false,
     },
     {
       title: 'TOPBAR.WORK',
+      type: 'work',
       isActive: false,
     },
     {
       title: 'TOPBAR.CONTACT',
+      type: 'contact',
       isActive: false,
     },
   ];
@@ -28,5 +34,7 @@ export class TopbarComponent {
   activeItem(index: number): void {
     this.menu.forEach((item) => (item.isActive = false));
     this.menu[index].isActive = true;
+    
+    this.activeTab.emit(this.menu[index].type)
   }
 }

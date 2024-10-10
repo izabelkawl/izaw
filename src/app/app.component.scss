@@ -1,12 +1,13 @@
 @import "./../assets/scss/variables";
 
-.home-container {
+.app {
   height: 100vh;
 
-  &--lang {
+  &__lang {
     position: fixed;
     background-color: $pink-color;
     width: max-content;
+    cursor: pointer;
     border-radius: 0 1rem 1rem 0;
     padding: 2px 10px;
   }

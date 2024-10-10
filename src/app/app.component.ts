@@ -1,10 +1,17 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { WorkComponent } from './views/work/work.component';
 import { AboutMeComponent } from './views/about-me/about-me.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { UpperCasePipe } from '@angular/common';
+import { TabTypes } from './components/topbar/topbar.models';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +28,9 @@ import { UpperCasePipe } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  @ViewChild('contact')
+  workRef!: ElementRef;
+
   readonly #translate = inject(TranslateService);
 
   public currentLang: 'pl' | 'en' = 'pl';
@@ -31,7 +41,9 @@ export class AppComponent implements OnInit {
 
     const browserLang = this.#translate.getBrowserLang();
     browserLang &&
-      this.#translate.use(RegExp(/en|pl/).exec(browserLang) ? browserLang : 'en');
+      this.#translate.use(
+        RegExp(/en|pl/).exec(browserLang) ? browserLang : 'en',
+      );
   }
 
   public changeLang(): void {
@@ -41,5 +53,9 @@ export class AppComponent implements OnInit {
 
   get langButtonLabel(): string {
     return this.currentLang === 'en' ? 'pl' : 'en';
+  }
+
+  scrollToWork(type: TabTypes): void {
+    document.getElementById(type)?.scrollIntoView();
   }
 }
