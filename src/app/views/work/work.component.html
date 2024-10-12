@@ -1,6 +1,11 @@
 @for (project of projects; track $index) {
   <div class="work">
-    <h1 class="work__title">{{ project }}</h1>
+    <h1
+      [ngClass]="{ work__title: true, 'work__title-link': work[project].link }"
+      (click)="goToLink(work[project].link)"
+    >
+      {{ project }}
+    </h1>
     <div class="work__skills">
       @for (skill of work[project].skills; track $index) {
         <div class="work__skills-item">{{ skill }}</div>

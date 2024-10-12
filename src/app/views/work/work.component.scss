@@ -9,6 +9,10 @@
   &__title {
     font-family: $font-family-caveat;
     font-size: $font-size-header;
+
+    &-link {
+      cursor: pointer;
+    }
   }
 
   &__skills {
