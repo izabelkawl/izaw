@@ -15,7 +15,7 @@ export class WorkComponent {
     CV: {
       link: 'https://izabelkawl.github.io/cv/',
       skills: [
-        'Angular',
+        'Angular v.17',
         'JavaScript',
         'TypeScript',
         'HTML/CSS',
@@ -27,7 +27,7 @@ export class WorkComponent {
     'Busy Bee': {
       link: 'https://izabelkawl.github.io/BusyBee/',
       skills: [
-        'Angular',
+        'Angular v.17',
         'JavaScript',
         'TypeScript',
         'HTML/CSS',

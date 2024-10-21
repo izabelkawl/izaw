@@ -1,19 +1,19 @@
 @import "./../../../assets/scss/variables";
 
 .about {
+  margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: $font-size-header;
+  font-size: $font-size-large;
 
   &__user {
-    width: 33%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 
     &-subtitle {
-      font-size: $font-size-logo;
+      font-size: $font-size-medium;
 
       &--dot {
         margin-right: 8px;
@@ -24,45 +24,22 @@
   }
 
   &__image {
-    position: relative;
-    height: auto;
     margin: 0 30px;
-    padding: 1rem;
-    box-shadow: none;
+    height: 500px;
     animation: pulse-shadow 3s infinite ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &__me {
-      height: 400px;
-      z-index: 1;
-      position: absolute;
-    }
-
-    &__tulip {
-      opacity: 0.5;
-      height: 600px;
-    }
   }
 
   &__position {
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    white-space: wrap;
-    white-space: pre-line;
+    max-width: min-content;
   }
 }
 
 @keyframes pulse-shadow {
-  0% {
-    filter: drop-shadow(0 0 30px rgba($pink-color, 0.4));
+  0%,
+  100% {
+    filter: drop-shadow(1px 1px 100px rgba($pink-color, 0.5));
   }
   50% {
-    filter: drop-shadow(0 0 60px $pink-color);
-  }
-  100% {
-    filter: drop-shadow(0 0 30px rgba($pink-color, 0.4));
+    filter: drop-shadow(10px 10px 100px $pink-color);
   }
 }

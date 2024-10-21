@@ -7,8 +7,8 @@
   align-items: center;
 
   &__title {
-    font-family: $font-family-caveat;
-    font-size: $font-size-header;
+    font-size: $font-size-large;
+    font-weight: 100;
 
     &-link {
       cursor: pointer;
@@ -25,7 +25,7 @@
       background-color: $white-color;
       width: max-content;
       padding: 1px 10px;
-      border-radius: 1rem;
+      border-radius: 16px;
       border: 1px solid $pink-color;
       box-shadow: 2px 5px $pink-color;
     }

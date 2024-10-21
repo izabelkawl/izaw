@@ -9,5 +9,13 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
-  downloadCv(): void {}
+  email: string = 'izabelawlazlo9@gmail.com';
+
+  public downloadCv(): void {
+    window.open('https://izabelkawl.github.io/cv/', '_blank');
+  }
+
+  public openMail(): void {
+    window.open(`mailto:${this.email}`);
+  }
 }

@@ -5,18 +5,18 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 2rem 5rem 0;
+    margin: 32px 80px 0;
     letter-spacing: 1px;
     white-space: nowrap;
   
     &__logo {
-      font-size: $font-size-logo;
+      font-size: $font-size-medium;
     }
   
     &__menu {
       list-style: none;
       display: flex;
-      gap: 2rem;
+      gap: 32px;
   
       &-element {
         height: 50px;

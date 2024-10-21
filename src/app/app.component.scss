@@ -5,6 +5,7 @@
 
   &__lang {
     position: fixed;
+    z-index: 100;
     background-color: $pink-color;
     width: max-content;
     cursor: pointer;
