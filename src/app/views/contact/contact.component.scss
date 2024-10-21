@@ -1,14 +1,13 @@
 @import "./../../../assets/scss/variables";
 
 .contact {
-  height: 100vh;
+  margin: 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: $font-size-large;
+  font-size: 36px;
   color: $pink-color;
-  letter-spacing: 5px;
   gap: 30px;
 
   &__mail {
@@ -17,14 +16,28 @@
 
   &__links {
     display: flex;
-    font-size: $font-size-medium;
-    gap: 55px;
+    font-size: 18px;
+    gap: 10px;
     letter-spacing: normal;
     cursor: pointer;
 
     a {
       text-decoration: none;
       color: $white-color;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    height: 100vh;
+    font-size: 100px;
+    color: $pink-color;
+    letter-spacing: 5px;
+    gap: 30px;
+
+    &__links {
+      font-size: 32px;
+      gap: 55px;
     }
   }
 }

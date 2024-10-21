@@ -1,6 +1,6 @@
 <div class="about">
   <div class="about__user">
-    <span
+    <span class="about__user-name"
       >{{ "ABOUT_ME.NAME" | translate }}
       {{ "ABOUT_ME.SURNAME" | translate }}</span
     >
@@ -10,7 +10,9 @@
       >{{ "ABOUT_ME.AVAILABLE" | translate }}</span
     >
   </div>
-  <img class="about__image" src="./../../../assets/img/logo.png" alt="logo" />
+  <div class="about__image">
+    <img src="./../../../assets/img/logo.png" alt="logo" />
+  </div>
   <div class="about__position">
     <span>{{ "ABOUT_ME.POSITION" | translate }}</span>
   </div>

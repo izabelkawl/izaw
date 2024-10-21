@@ -1,36 +1,104 @@
 @import "./../../../assets/scss/variables";
 
 .about {
-  margin-top: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $font-size-large;
+  margin: 100px 0;
+  display: grid;
+  grid-template-areas:
+    "logo"
+    "position"
+    "name";
 
   &__user {
+    grid-area: name;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    text-align: center;
+
+    &-name {
+      font-size: 70px;
+    }
 
     &-subtitle {
-      font-size: $font-size-medium;
+      font-size: 28px;
 
       &--dot {
         margin-right: 8px;
         color: $pink-color;
-        text-shadow: 0 0 10px white;
+        text-shadow: 0 0 10px $white-color;
       }
     }
   }
 
   &__image {
-    margin: 0 30px;
-    height: 500px;
-    animation: pulse-shadow 3s infinite ease-in-out;
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin: 20px;
+      width: 100px;
+      animation: pulse-shadow 3s infinite ease-in-out;
+    }
   }
 
   &__position {
-    max-width: min-content;
+    text-align: center;
+    grid-area: position;
+    font-size: 32px;
+    white-space: wrap;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__user {
+      width: 300px;
+      align-items: flex-end;
+      text-align: end;
+    }
+
+    &__image {
+      img {
+        width: 200px;
+      }
+    }
+
+    &__position {
+      width: 300px;
+      text-align: start;
+      font-size: 70px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-top: 100px;
+
+    &__user {
+      width: 330px;
+
+      &-name {
+        font-size: 100px;
+      }
+
+      &-subtitle {
+        font-size: 38px;
+      }
+    }
+
+    &__image {
+      img {
+        width: 500px;
+      }
+    }
+
+    &__position {
+      font-size: 100px;
+      width: 330px;
+    }
   }
 }
 

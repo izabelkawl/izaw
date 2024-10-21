@@ -2,34 +2,46 @@
 @import "./../../../assets/scss/mixins";
 
 .topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 16px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+
+  &__logo {
+    font-size: 28px;
+  }
+
+  &__menu {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin: 32px 80px 0;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  
-    &__logo {
-      font-size: $font-size-medium;
-    }
-  
-    &__menu {
-      list-style: none;
+    gap: 16px;
+
+    &-element {
+      height: 50px;
       display: flex;
-      gap: 32px;
-  
-      &-element {
-        height: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        @include textStyle($white-color);
-        
-        &--dot {
-          color: $pink-color;
-          text-shadow: 0 0 10px white;
-        }
+      flex-direction: column;
+      align-items: center;
+
+      @include textStyle($white-color);
+
+      &--dot {
+        color: $pink-color;
+        text-shadow: 0 0 10px white;
       }
     }
   }
+
+  @media screen and (min-width: 768px) {
+    margin: 32px 80px 0;
+
+    &__logo {
+      font-size: 32px;
+    }
+
+    &__menu {
+      gap: 32px;
+    }
+  }
+}
