@@ -100,6 +100,10 @@
           window.emitMatomoAction("ACTION_CLICK", label || "", 1);
         };
 
+        window.ACTION_FOCUS = function (label) {
+          window.emitMatomoAction("ACTION_FOCUS", label || "", 1);
+        };
+
         // Emit ACTION_ENTER once when the app is ready
         if (
           document.readyState === "complete" ||
@@ -114,6 +118,30 @@
               window.ACTION_ENTER();
             }, 500);
           });
+        }
+
+        // Add click listener to img for ACTION_CLICK
+        function attachImgClickListener() {
+          var img = document.querySelector("body > img");
+          if (img) {
+            img.addEventListener("click", function () {
+              window.ACTION_CLICK("img-click");
+            });
+            img.addEventListener("focus", function () {
+              window.ACTION_FOCUS("img-focus");
+            });
+            img.style.cursor = "pointer";
+            img.setAttribute("tabindex", "0");
+          }
+        }
+
+        if (
+          document.readyState === "complete" ||
+          document.readyState === "interactive"
+        ) {
+          attachImgClickListener();
+        } else {
+          document.addEventListener("DOMContentLoaded", attachImgClickListener);
         }
       })();
     </script>
