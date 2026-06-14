@@ -1,30 +1,93 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>izaw.pl</title>
-  <base href="/">
-  <link rel="icon" type="image/x-icon" href="./assets/img/logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <title>izaw.pl</title>
+    <base href="/" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://izaw.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='https://cdn.matomo.cloud/izaw.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
-</head>
-<body>
-  <app-root></app-root>
-</body>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: transparent;
+      }
+      body > img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+      }
+    </style>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "https://izaw.matomo.cloud/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = "https://cdn.matomo.cloud/izaw.matomo.cloud/matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+    <script>
+      (function () {
+        window.emitMatomoAction = function (actionName, label) {
+          window._paq = window._paq || [];
+          try {
+            window._paq.push(["trackEvent", actionName, "emit", label || ""]);
+          } catch (e) {
+            /* silent */
+          }
+        };
+
+        window.ACTION_ENTER = function (label) {
+          window.emitMatomoAction(
+            "ACTION_ENTER",
+            label || location.pathname || document.title,
+          );
+        };
+
+        window.ACTION_CLICK = function (label) {
+          window.emitMatomoAction("ACTION_CLICK", label || "");
+        };
+
+        // Emit ACTION_ENTER once when the app is ready
+        if (
+          document.readyState === "complete" ||
+          document.readyState === "interactive"
+        ) {
+          window.ACTION_ENTER();
+        } else {
+          document.addEventListener("DOMContentLoaded", function () {
+            window.ACTION_ENTER();
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <img
+      src="https://scontent-waw2-2.xx.fbcdn.net/v/t39.30808-6/308983108_404302715216177_4431221627740720783_n.jpg?stp=dst-jpg_tt6&cstp=mx451x385&ctp=s451x385&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=R5PskPDx5k8Q7kNvwE6y311&_nc_oc=AdpJZj-FfD5s_XVfTyO8NY-qA3-azHw1vnEYXrhlTPuX49hpb-RR7tbGt0ivsFvq9J0&_nc_zt=23&_nc_ht=scontent-waw2-2.xx&_nc_gid=HkufuP60p6-1ZNxZA6J2Lg&_nc_ss=7b2a8&oh=00_Af8ALQ_E10r2eUjusYpfos_30Qc7_uYIvdlaqp0QOE6VGw&oe=6A34C4E7"
+      alt="logo"
+    />
+    <!-- <app-root></app-root> -->
+  </body>
 </html>
