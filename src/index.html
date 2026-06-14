@@ -49,12 +49,42 @@
     <!-- End Matomo Code -->
     <script>
       (function () {
-        window.emitMatomoAction = function (actionName, label) {
-          window._paq = window._paq || [];
-          try {
-            window._paq.push(["trackEvent", actionName, "emit", label || ""]);
-          } catch (e) {
-            /* silent */
+        // Wait for Matomo to be fully loaded before tracking events
+        var trackingReady = false;
+        var trackingQueue = [];
+
+        function sendQueuedEvents() {
+          if (trackingReady && window._paq) {
+            while (trackingQueue.length > 0) {
+              var event = trackingQueue.shift();
+              window._paq.push(event);
+            }
+          }
+        }
+
+        // Check if Matomo is loaded
+        function checkMatomoReady() {
+          if (
+            window._paq &&
+            (window.Matomo ||
+              (window._paq.length && typeof window._paq.push === "function"))
+          ) {
+            trackingReady = true;
+            sendQueuedEvents();
+          } else {
+            setTimeout(checkMatomoReady, 100);
+          }
+        }
+
+        checkMatomoReady();
+
+        // Emit generic action to Matomo
+        window.emitMatomoAction = function (action, name, label) {
+          var event = ["trackEvent", "Zdarzenia", action, name, label || 1];
+          if (trackingReady && window._paq) {
+            window._paq.push(event);
+          } else {
+            trackingQueue.push(event);
           }
         };
 
@@ -62,11 +92,12 @@
           window.emitMatomoAction(
             "ACTION_ENTER",
             label || location.pathname || document.title,
+            1,
           );
         };
 
         window.ACTION_CLICK = function (label) {
-          window.emitMatomoAction("ACTION_CLICK", label || "");
+          window.emitMatomoAction("ACTION_CLICK", label || "", 1);
         };
 
         // Emit ACTION_ENTER once when the app is ready
@@ -74,10 +105,14 @@
           document.readyState === "complete" ||
           document.readyState === "interactive"
         ) {
-          window.ACTION_ENTER();
+          setTimeout(function () {
+            window.ACTION_ENTER();
+          }, 500);
         } else {
           document.addEventListener("DOMContentLoaded", function () {
-            window.ACTION_ENTER();
+            setTimeout(function () {
+              window.ACTION_ENTER();
+            }, 500);
           });
         }
       })();
