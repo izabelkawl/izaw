@@ -1,10 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8" />
     <title>izaw.pl</title>
     <base href="/" />
     <link rel="icon" type="image/x-icon" href="./assets/img/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <style>
@@ -18,13 +24,52 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        background: transparent;
+        background: radial-gradient(
+          circle at 20% 20%,
+          #64133b,
+          #0e090d 50%,
+          #0e090d 100%
+        );
+        font-family: "Roboto", sans-serif;
       }
-      body > img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 4px;
+      .joke-widget {
+        width: min(720px, calc(100% - 2rem));
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .joke-widget__text {
+        margin: 0;
+        color: #ffffff;
+        line-height: 1.65;
+        font-size: clamp(1rem, 2.2vw, 1.35rem);
+      }
+      .joke-widget__actions {
+        margin-top: 1.25rem;
+      }
+      .joke-widget__button {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #2a0a4a;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          background-color 0.15s ease;
+      }
+      .joke-widget__button:hover {
+        background: #ece5ff;
+        transform: translateY(-1px);
+      }
+      .joke-widget__button:active {
+        transform: translateY(0);
+      }
+      .joke-widget__button:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 3px;
       }
     </style>
 
@@ -120,38 +165,92 @@
           });
         }
 
-        // Add click listener to img for ACTION_CLICK
-        function attachImgClickListener() {
-          var img = document.querySelector("body > img");
-          if (img) {
-            img.addEventListener("click", function () {
-              window.ACTION_CLICK("img-click");
-            });
-            img.addEventListener("focus", function () {
-              window.ACTION_FOCUS("img-focus");
-            });
-            img.style.cursor = "pointer";
-            img.setAttribute("tabindex", "0");
+        async function fetchProgrammingJoke() {
+          var jokeTarget = document.getElementById("joke-text");
+          var fallbackJokes = [
+            "Dlaczego programista nie lubi natury? Bo ma za dużo bugów.",
+            "Ilu programistów potrzeba, żeby wymienić żarówkę? Żadnego, to problem hardware'owy.",
+            "Programista w sklepie: poproszę chleb. Jeśli są jajka, to osiem.",
+            "Spotykają się dwa wątki. Jeden pyta: Hej, wszystko gra? Drugi: Nie wiem, cały czas czekam.",
+            "Debugowanie to jak bycie detektywem w kryminale, który samemu się napisało.",
+          ];
+          if (!jokeTarget) {
+            return;
           }
+
+          jokeTarget.textContent = "Ładowanie żartu...";
+
+          try {
+            var response = await fetch(
+              "https://v2.jokeapi.dev/joke/Programming?lang=pl&blacklistFlags=nsfw,religious,political,racist,sexist,explicit",
+            );
+
+            if (!response.ok) {
+              throw new Error("API unavailable");
+            }
+
+            var payload = await response.json();
+
+            if (payload && payload.type === "single" && payload.joke) {
+              jokeTarget.textContent = payload.joke;
+              return;
+            }
+
+            if (payload && payload.type === "twopart") {
+              jokeTarget.textContent = payload.setup + " " + payload.delivery;
+              return;
+            }
+
+            jokeTarget.textContent =
+              fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
+          } catch {
+            jokeTarget.textContent =
+              fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
+          }
+        }
+
+        function attachJokeActions() {
+          var button = document.getElementById("joke-refresh");
+          if (!button) {
+            return;
+          }
+
+          button.addEventListener("click", function () {
+            globalThis.ACTION_CLICK("joke-refresh");
+            fetchProgrammingJoke();
+          });
+
+          button.addEventListener("focus", function () {
+            globalThis.ACTION_FOCUS("joke-refresh-focus");
+          });
         }
 
         if (
           document.readyState === "complete" ||
           document.readyState === "interactive"
         ) {
-          attachImgClickListener();
+          attachJokeActions();
+          fetchProgrammingJoke();
         } else {
-          document.addEventListener("DOMContentLoaded", attachImgClickListener);
+          document.addEventListener("DOMContentLoaded", function () {
+            attachJokeActions();
+            fetchProgrammingJoke();
+          });
         }
       })();
     </script>
   </head>
   <body>
-    <img
-      src="https://scontent-waw2-2.xx.fbcdn.net/v/t39.30808-6/308983108_404302715216177_4431221627740720783_n.jpg?stp=dst-jpg_tt6&cstp=mx451x385&ctp=s451x385&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=R5PskPDx5k8Q7kNvwE6y311&_nc_oc=AdpJZj-FfD5s_XVfTyO8NY-qA3-azHw1vnEYXrhlTPuX49hpb-RR7tbGt0ivsFvq9J0&_nc_zt=23&_nc_ht=scontent-waw2-2.xx&_nc_gid=HkufuP60p6-1ZNxZA6J2Lg&_nc_ss=7b2a8&oh=00_Af8ALQ_E10r2eUjusYpfos_30Qc7_uYIvdlaqp0QOE6VGw&oe=6A34C4E7"
-      alt="logo not"
-      tabindex="0"
-    />
+    <main class="joke-widget" aria-live="polite">
+      <p id="joke-text" class="joke-widget__text">
+        Kliknij przycisk, aby pobrać żart.
+      </p>
+      <div class="joke-widget__actions">
+        <button id="joke-refresh" class="joke-widget__button" type="button">
+          Losuj kolejny żart
+        </button>
+      </div>
+    </main>
     <!-- <app-root></app-root> -->
   </body>
 </html>

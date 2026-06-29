@@ -8,16 +8,9 @@ $white-color: #fff;
 $black-color: #000;
 
 // font
-
 $font-family-regular: "MangoGrotesque";
-$font-family-caveat: "Caveat";
 
 @font-face {
   font-family: MangoGrotesque;
   src: url("./../font/MangoGrotesque-Medium.ttf");
-}
-
-@font-face {
-  font-family: Caveat;
-  src: url("./../font/Caveat-Bold.ttf");
 }
