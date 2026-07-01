@@ -32,6 +32,13 @@
           },
           "configurations": {
             "production": {
+              "optimization": true,
+              "buildOptimizer": true,
+              "extractLicenses": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "vendorChunk": false,
+              "outputPath": "dist/izaw",
               "budgets": [
                 {
                   "type": "initial",
